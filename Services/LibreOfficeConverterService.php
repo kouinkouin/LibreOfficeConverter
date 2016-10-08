@@ -28,16 +28,8 @@ class LibreOfficeConverterService
 
     public function convert($inFile, $outDir, $toFormat)
     {
-        if ( ! isset($inFile)) {
-            throw new \Exception('"inFile" is required');
-        }
-
         if ( ! file_exists($inFile)) {
             throw new \Exception($inFile.': No such file or directory');
-        }
-
-        if ( ! isset($outDir)) {
-            throw new \Exception('"outDir" is required');
         }
 
         if ( ! file_exists($outDir)) {
