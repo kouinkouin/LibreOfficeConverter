@@ -46,8 +46,9 @@ class LibreOfficeConverterService
         set_time_limit(0);
 
         // Génération de fichier (.pdf)
-        exec('export HOME='.$outDir.' && '.$this->libreoffice.' --headless --convert-to '.$toFormat.' --outdir '.$outDir.' '.$inFile,
-            $output, $err);
+        $commandLine = $this->libreoffice.' --headless --convert-to '.$toFormat.' --outdir '.$outDir.' '.$inFile;
+
+        exec($commandLine, $output, $err);
         if ($err) {
             throw new \Exception('Error: Cannot convert '.$inFile.' to '.$toFormat);
         }
