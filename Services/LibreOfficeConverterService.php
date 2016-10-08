@@ -55,7 +55,10 @@ class LibreOfficeConverterService
 
         $inFileToArray = explode("/", $inFile);
         $inName = end($inFileToArray);
-        $outName = implode('.', explode(".", $inName, -1)).'.'.$toFormat;
+
+        $outExtension = explode(':', $toFormat)[0];
+
+        $outName = implode('.', explode(".", $inName, -1)).'.'.$outExtension;
         chmod($outDir.'/'.$outName, 0755);
     }
 
